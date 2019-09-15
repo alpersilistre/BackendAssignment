@@ -61,11 +61,13 @@ namespace ClayBackendCase.API.Infrastructure.Data
         public async Task<User> GetUser(int id)
         {
             return await _dbContext.Users
+                .Include(x => x.Company)
                 .Select(x => new User
                 {
                     Id = x.Id,
                     FirstName = x.FirstName,
-                    LastName = x.LastName
+                    LastName = x.LastName,
+                    Company = x.Company
                 })
                 .SingleOrDefaultAsync(x => x.Id == id);
         }

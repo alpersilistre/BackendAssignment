@@ -105,7 +105,7 @@ namespace ClayBackendCase.API.Controllers
         /// Gets a specified user.
         /// </summary>
         /// <param name="id"></param>
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin, User")]
         [HttpGet("users/{id}")]
         public async Task<IActionResult> GetUser(int id)
         {            

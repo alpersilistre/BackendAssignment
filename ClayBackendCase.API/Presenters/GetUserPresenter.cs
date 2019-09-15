@@ -12,7 +12,7 @@ namespace ClayBackendCase.API.Presenters
             Result.StatusCode = (int)(response.Success ? HttpStatusCode.OK : HttpStatusCode.BadRequest);
 
             Result.Content = response.Success ?
-                SerializeObject(response.Users.Select(x => new { x.Id, x.FirstName, x.LastName }).FirstOrDefault()) :
+                SerializeObject(response.Users.Select(x => new { x.Id, x.FirstName, x.LastName, companyId = x.Company?.Id }).FirstOrDefault()) :
                 SerializeObject(response.Errors);
         }
     }

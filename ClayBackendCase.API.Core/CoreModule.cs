@@ -15,6 +15,7 @@ namespace ClayBackendCase.API.Core
             builder.RegisterType<LockingUseCase>().As<ILockingUseCase>().InstancePerLifetimeScope();
             builder.RegisterType<CreateLockUseCase>().As<ICreateLockUseCase>().InstancePerLifetimeScope();
             builder.RegisterType<GetEventsUseCase>().As<IGetEventsUseCase>().InstancePerLifetimeScope();
+            builder.RegisterType<GetCompanyLocksUseCase>().As<IGetCompanyLocksUseCase>().InstancePerLifetimeScope();
         }
     }
 }

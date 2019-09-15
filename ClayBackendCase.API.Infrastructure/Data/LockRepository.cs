@@ -2,6 +2,7 @@
 using ClayBackendCase.API.Core.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace ClayBackendCase.API.Infrastructure.Data
@@ -22,6 +23,14 @@ namespace ClayBackendCase.API.Infrastructure.Data
         public async Task<List<Lock>> GetAllWithCompanyAsync()
         {
             return await _dbContext.Locks
+                .Include(x => x.Company)
+                .ToListAsync();
+        }
+
+        public async Task<List<Lock>> GetAllByCompanyIdAsync(int id)
+        {
+            return await _dbContext.Locks
+                .Where(x => x.Company.Id == id)
                 .Include(x => x.Company)
                 .ToListAsync();
         }

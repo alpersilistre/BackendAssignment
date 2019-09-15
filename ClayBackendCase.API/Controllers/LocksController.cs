@@ -15,28 +15,35 @@ namespace ClayBackendCase.API.Controllers
         private readonly IGetLocksUseCase _getLocksUseCase;
         private readonly ICreateLockUseCase _createLockUseCase;
         private readonly ILockingUseCase _lockingUseCase;
+        private readonly IGetCompanyLocksUseCase _getCompanyLocksUseCase;
         private readonly GetLocksPresenter _getLocksPresenter;
         private readonly GetLockPresenter _getLockPresenter;
         private readonly CreateLockPresenter _createLockPresenter;
         private readonly LockingPresenter _lockingPresenter;
+        private readonly GetCompanyLocksPresenter _getCompanyLocksPresenter;
+
 
         public LocksController(
             IGetLocksUseCase getLocksUseCase,
             ICreateLockUseCase createLockUseCase,
             ILockingUseCase lockingUseCase,
+            IGetCompanyLocksUseCase getCompanyLocksUseCase,
             GetLocksPresenter getLocksPresenter,
             GetLockPresenter getLockPresenter,
             CreateLockPresenter createLockPresenter,
-            LockingPresenter lockingPresenter
+            LockingPresenter lockingPresenter,
+            GetCompanyLocksPresenter getCompanyLocksPresenter
             )
         {
             _getLocksUseCase = getLocksUseCase;
             _createLockUseCase = createLockUseCase;
             _lockingUseCase = lockingUseCase;
+            _getCompanyLocksUseCase = getCompanyLocksUseCase;
             _getLocksPresenter = getLocksPresenter;
             _getLockPresenter = getLockPresenter;
             _createLockPresenter = createLockPresenter;
             _lockingPresenter = lockingPresenter;
+            _getCompanyLocksPresenter = getCompanyLocksPresenter;
         }
 
         /// <summary>
@@ -62,6 +69,19 @@ namespace ClayBackendCase.API.Controllers
             await _getLocksUseCase.Handle(new GetLocksRequest(id), _getLockPresenter);
 
             return _getLockPresenter.Result;
+        }
+
+        /// <summary>
+        /// Gets specified company locks.
+        /// </summary>
+        /// <param name="id"></param>
+        [Authorize(Roles = "Admin, User")]
+        [HttpGet("company/{id}")]
+        public async Task<IActionResult> GetCompanyLocks(int id)
+        {
+            await _getCompanyLocksUseCase.Handle(new GetCompanyLocksRequest(id), _getCompanyLocksPresenter);
+
+            return _getCompanyLocksPresenter.Result;
         }
 
         /// <summary>

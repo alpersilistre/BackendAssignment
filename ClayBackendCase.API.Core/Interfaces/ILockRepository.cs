@@ -8,5 +8,6 @@ namespace ClayBackendCase.API.Core.Interfaces
     {
         Task<Lock> GetByIdWithCompanyAsync(int id);
         Task<List<Lock>> GetAllWithCompanyAsync();
+        Task<List<Lock>> GetAllByCompanyIdAsync(int id);
     }
 }
