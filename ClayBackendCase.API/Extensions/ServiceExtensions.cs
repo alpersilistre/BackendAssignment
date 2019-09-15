@@ -42,6 +42,7 @@ namespace ClayBackendCase.API
         {
             var jwtAppSettingOptions = configuration.GetSection("JwtIssuerOptions");
 
+            // Generated on https://www.grc.com/passwords.htm
             var secret = configuration.GetSection("AppSettings")["Secret"];
             var issuerSigningKey = Encoding.ASCII.GetBytes(secret);
 

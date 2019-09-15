@@ -5,6 +5,7 @@ using Autofac;
 using Autofac.Extensions.DependencyInjection;
 using ClayBackendCase.API.Core;
 using ClayBackendCase.API.Core.Interfaces;
+using ClayBackendCase.API.Extensions;
 using ClayBackendCase.API.Infrastructure;
 using ClayBackendCase.API.Infrastructure.Data;
 using ClayBackendCase.API.Presenters;
@@ -68,12 +69,11 @@ namespace ClayBackendCase.API
                 app.UseHsts();
             }
 
+            app.ConfigureExceptionHandler();
+
             app.UseSwagger();
 
-            app.UseSwaggerUI(x =>
-            {
-                x.SwaggerEndpoint("/swagger/v1/swagger.json", "Clay API V1");
-            });
+            app.UseSwaggerUI(x => { x.SwaggerEndpoint("/swagger/v1/swagger.json", "Clay API V1"); });
 
             app.UseHttpsRedirection();
 
