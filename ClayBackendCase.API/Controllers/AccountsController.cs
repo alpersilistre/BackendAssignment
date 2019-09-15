@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 
 namespace ClayBackendCase.API.Controllers
-{
+{    
     [Authorize]
     [Route("[controller]")]
     [ApiController]
@@ -51,16 +51,11 @@ namespace ClayBackendCase.API.Controllers
         ///        "password": "string"
         ///     }
         ///
-        /// </remarks>
+        /// </remarks>        
         [AllowAnonymous]
         [HttpPost("login")]
         public async Task<IActionResult> Login([FromBody] LoginRequest request)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
+        {            
             await _loginUseCase.Handle(new LoginRequest(request.UserName, request.Password), _loginPresenter);
 
             return _loginPresenter.Result;
@@ -85,11 +80,6 @@ namespace ClayBackendCase.API.Controllers
         [HttpPost("register")]
         public async Task<IActionResult> Register([FromBody] RegisterUserRequest request)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
             await _registerUserUseCase.Handle(
                 new RegisterUserRequest(request.FirstName, request.LastName, request.UserName, request.Password),
                 _registerUserPresenter

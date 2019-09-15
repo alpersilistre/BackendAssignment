@@ -103,11 +103,6 @@ namespace ClayBackendCase.API.Controllers
         [HttpPatch("{id}/locking")]
         public async Task<IActionResult> Locking(int id, [FromBody] LockingRequest request)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
             await _lockingUseCase.Handle(new LockingRequest(id, request.IsLocked, GetUserId()), _lockingPresenter);
 
             return _lockingPresenter.Result;

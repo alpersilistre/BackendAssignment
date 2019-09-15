@@ -1,11 +1,10 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
+﻿using ClayBackendCase.API.Extensions;
+using Microsoft.AspNetCore.Mvc;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace ClayBackendCase.API.Controllers
 {
+    [ModelValidation]
     public class BaseController : ControllerBase
     {     
         protected int GetUserId()

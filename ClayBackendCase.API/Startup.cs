@@ -42,6 +42,8 @@ namespace ClayBackendCase.API
 
             services.ConfigureSwagger();
 
+            services.AddScoped<ModelValidationAttribute>();
+
             var builder = new ContainerBuilder();
 
             builder.RegisterModule(new CoreModule());
