@@ -28,7 +28,6 @@ namespace ClayBackendCase.API.Infrastructure.Auth
                 new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
                 new Claim("id", id),
                 new Claim(ClaimTypes.Role, role)
-                //new Claim("rol", role)
             };
 
             var token = new JwtSecurityToken(
@@ -41,7 +40,7 @@ namespace ClayBackendCase.API.Infrastructure.Auth
 
             var encodedJwt = new JwtSecurityTokenHandler().WriteToken(token);
 
-            return new Token(id, encodedJwt, 360);
+            return new Token(id, encodedJwt, 360, role);
         }
     }
 }

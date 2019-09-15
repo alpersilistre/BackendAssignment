@@ -30,7 +30,7 @@ namespace ClayBackendCase.API.Core.UnitTests
             var mockJwtFactory = new Mock<IJwtFactory>();
             mockJwtFactory
                 .Setup(repo => repo.GenerateToken(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>()))
-                .Returns(await Task.FromResult(new Token("", "", 0)));
+                .Returns(await Task.FromResult(new Token("", "", 0, "")));
 
             var useCase = new LoginUseCase(mockUserRepository.Object, mockJwtFactory.Object);
 
@@ -60,7 +60,7 @@ namespace ClayBackendCase.API.Core.UnitTests
             var mockJwtFactory = new Mock<IJwtFactory>();
             mockJwtFactory
                 .Setup(repo => repo.GenerateToken(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>()))
-                .Returns(await Task.FromResult(new Token("", "", 0)));
+                .Returns(await Task.FromResult(new Token("", "", 0, "")));
 
             var useCase = new LoginUseCase(mockUserRepository.Object, mockJwtFactory.Object);
 
@@ -90,7 +90,7 @@ namespace ClayBackendCase.API.Core.UnitTests
             var mockJwtFactory = new Mock<IJwtFactory>();
             mockJwtFactory
                 .Setup(repo => repo.GenerateToken(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>()))
-                .Returns(await Task.FromResult(new Token("", "", 0)));
+                .Returns(await Task.FromResult(new Token("", "", 0, "")));
 
             var useCase = new LoginUseCase(mockUserRepository.Object, mockJwtFactory.Object);
 
@@ -120,7 +120,7 @@ namespace ClayBackendCase.API.Core.UnitTests
             var mockJwtFactory = new Mock<IJwtFactory>();
             mockJwtFactory
                 .Setup(repo => repo.GenerateToken(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>()))
-                .Returns(await Task.FromResult(new Token("", "", 0)));
+                .Returns(await Task.FromResult(new Token("", "", 0, "")));
 
             var useCase = new LoginUseCase(mockUserRepository.Object, mockJwtFactory.Object);
 
