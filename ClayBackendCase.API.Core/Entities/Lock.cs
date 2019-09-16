@@ -16,6 +16,7 @@ namespace ClayBackendCase.API.Core.Entities
 
         [Required]
         public Company Company { get; set; }
+        public int CompanyId { get; set; }
 
         public IReadOnlyCollection<Event> Events { get; set; }
     }

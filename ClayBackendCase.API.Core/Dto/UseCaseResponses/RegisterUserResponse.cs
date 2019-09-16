@@ -19,5 +19,9 @@ namespace ClayBackendCase.API.Core.Dto.UseCaseResponses
         {
             Id = id;
         }
+
+        public RegisterUserResponse(bool success = false, string message = null) : base(success, message)
+        {
+        }
     }
 }

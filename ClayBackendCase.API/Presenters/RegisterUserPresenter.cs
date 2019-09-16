@@ -8,9 +8,9 @@ namespace ClayBackendCase.API.Presenters
     {
         public void Handle(RegisterUserResponse response)
         {
-            Result.StatusCode = (int)(response.Success ? HttpStatusCode.OK : HttpStatusCode.BadRequest);
+            Result.StatusCode = (int)(response.Success ? HttpStatusCode.OK : HttpStatusCode.BadRequest);          
 
-            Result.Content = response.Success ? SerializeObject(response) : SerializeObject(response.Errors);
+            Result.Content = response.Success ? SerializeObject(response) : SerializeObject(new { response.Message });
         }
     }
 }
