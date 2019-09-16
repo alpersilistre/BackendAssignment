@@ -14,7 +14,7 @@
 4) It uses https://localhost:44377 as the default port. It is configurable from the launchSettings.json file. (Don't forget to update client project apiUrl from the webpack.config.json file)
 
 
-# Link of the client App:
+# Link of the client App: https://github.com/alpersilistre/BackendAssignment-Client
 
 # How to start the client
 1) npm install on the project main folder
